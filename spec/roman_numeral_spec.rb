@@ -222,7 +222,8 @@ describe RomanNumeral do
               tests = {
                 1000 => 'M',
                 2465 => 'MMCDLXV',
-                3948 => 'MMMCMXLVIII'
+                3948 => 'MMMCMXLVIII',
+                3999 => 'MMMCMXCIX'
             }
             # Act / Assert
             tests.each do |input, output|
