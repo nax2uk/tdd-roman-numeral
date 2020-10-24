@@ -147,64 +147,30 @@ describe RomanNumeral do
         end
     end
 
-    it "given user inputs 50, returns 'L'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(50)
-        expected_output = 'L'
+    context "given user enters a 2 digit number that has 5, 6, 7 or 8 tens, returns symbols 'L' or/and 'I' at the start of the output" do
+        # Arrange
+        inputs = {
+            50 => 'L',
+            51 => 'LI',
+            54 => 'LIV',
+            60 => 'LX',
+            61 => 'LXI',
+            64 => 'LXIV',
+            70 => 'LXX'
+        }
 
-        #Assert
-        expect(actual_output).to eq(expected_output)
+        # Act / Assert
+        inputs.each do |input, output|
+            it "given user inputs #{input}, returns #{output}" do
+                actual_output = roman_numeral.convert(input)
+                expected_output = output
+        
+                #Assert
+                expect(actual_output).to eq(expected_output)
+            end
+        end
     end
-    it "given user inputs 51, returns 'LI'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(51)
-        expected_output = 'LI'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 54, returns 'LIV'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(54)
-        expected_output = 'LIV'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-
-    it "given user inputs 60 returns 'LX'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(60)
-        expected_output = 'LX'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 61 returns 'LXI'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(61)
-        expected_output = 'LXI'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 64 returns 'LXIV'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(64)
-        expected_output = 'LXIV'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 70, returns 'LXX" do
-            #Arrange / Act
-            actual_output = roman_numeral.convert(70)
-            expected_output = 'LXX'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-
-    end
+ 
     it "given user inputs 90, returns 'XC" do
         #Arrange / Act
         actual_output = roman_numeral.convert(90)
