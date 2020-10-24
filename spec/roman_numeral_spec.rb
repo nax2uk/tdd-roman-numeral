@@ -217,6 +217,7 @@ describe RomanNumeral do
             end
         end
     end
+    
     context "given user enters a 4 digit number (up to 3999), returns the appropriate symbols" do
               # Arrange
               tests = {
