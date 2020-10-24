@@ -164,31 +164,31 @@ describe RomanNumeral do
             it "given user inputs #{input}, returns #{output}" do
                 actual_output = roman_numeral.convert(input)
                 expected_output = output
-        
-                #Assert
+
                 expect(actual_output).to eq(expected_output)
             end
         end
     end
- 
-    it "given user inputs 90, returns 'XC" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(90)
-        expected_output = 'XC'
+    context "given user enters a 2 digit number that has 9 tens, returns symbols 'XC' at the start of the output" do
+        # Arrange
+        tests = {
+            90=>'XC',
+            95=>'XCV'
+        }
+        # Act / Assert
+        tests.each do |input, output|
+            it "given user inputs #{input}, returns #{output}" do
 
-        #Assert
-        expect(actual_output).to eq(expected_output)
+
+                actual_output = roman_numeral.convert(input)
+                expected_output = output
+                    
+                expect(actual_output).to eq(expected_output)
+            end
+        end
 
     end
-    it "given user inputs 95, returns 'XCV" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(95)
-        expected_output = 'XCV'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-
-    end
+   
     it "given user inputs 100, returns 'C'" do
         #Arrange / Act
         actual_output = roman_numeral.convert(100)
