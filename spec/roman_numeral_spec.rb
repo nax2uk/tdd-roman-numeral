@@ -10,6 +10,15 @@ describe RomanNumeral do
         expect { roman_numeral.convert() }.to raise_error(ArgumentError)
     end
 
+    it "given user inputs a negative number, returns ''" do
+
+        #Arrange / Act
+        actual_output = roman_numeral.convert(-3)
+        expected_output = ''
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
     context "given user enters a 1 digit number, returns the correct symbols " do
         it "given user inputs 0, returns ''" do 
   
@@ -84,7 +93,7 @@ describe RomanNumeral do
 
     end
       
-    context "given user enters a 2 digit number that has 1, 2, or 3 tens, returns 'X's at the start of the output\n" do
+    context "given user enters a 2 digit number that has 1, 2, or 3 tens,q returns 'X's at the start of the output\n" do
         context "given user inputs a number which has n tens returns output starting with n number of 'X's\n" do
 
             # Arrange

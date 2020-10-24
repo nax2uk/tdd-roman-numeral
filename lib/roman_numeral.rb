@@ -1,13 +1,11 @@
 class RomanNumeral
 
     def convert(num)
-        raise ArgumentError.new("You must enter a positive number") unless num
+        raise ArgumentError.new("You must enter a number") unless num
         recursive_convert(num,1)
-  
     end
 
     def recursive_convert(num, place_value_position)
-
         roman_numeral = {
             1 => 'I',
             5 => 'V',
@@ -30,7 +28,6 @@ class RomanNumeral
         output_string
     end
 
-
     def convert_helper(place_value, first_symbol, middle_symbol, last_symbol)
         case place_value
         when 0..3
@@ -48,3 +45,7 @@ class RomanNumeral
         (number % (10**position)) / (10**(position-1))
     end
 end
+roman_numeral = RomanNumeral.new
+puts roman_numeral.convert(-3)
+
+puts roman_numeral.convert(3)
