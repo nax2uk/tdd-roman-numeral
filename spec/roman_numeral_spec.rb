@@ -1,4 +1,4 @@
-require "./lib/giraffe"
+require "./lib/roman_numeral"
 
 describe RomanNumeral do
     let(:roman_numeral) {RomanNumeral.new}
