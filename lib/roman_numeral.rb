@@ -32,7 +32,9 @@ class RomanNumeral
             50 => 'L',
             100 => 'C',
             500 => 'D',
-            1000 => 'M'
+            1000 => 'M',
+            5000 => 'V',
+            10000=> 'X'
         }
 
         output_string = ""
