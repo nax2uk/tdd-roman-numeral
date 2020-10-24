@@ -188,92 +188,33 @@ describe RomanNumeral do
         end
 
     end
-   
-    it "given user inputs 100, returns 'C'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(100)
-        expected_output = 'C'
 
-        #Assert
-        expect(actual_output).to eq(expected_output)
+    context "given user enters a 3 digit number, returns the appropriate symbols" do
+        # Arrange
+        tests = {
+            100 => 'C',
+            101 => 'CI',
+            104 => 'CIV',
+            110 => 'CX',
+            140 => 'CXL',
+            400 => 'CD',
+            440 => 'CDXL',
+            500 => 'D',
+            600 => 'DC',
+            900 =>  'CM'
+
+        }
+        # Act / Assert
+        tests.each do |input, output|
+            it "given user inputs #{input}, returns #{output}" do
+
+
+                actual_output = roman_numeral.convert(input)
+                expected_output = output
+                    
+                expect(actual_output).to eq(expected_output)
+            end
+        end
     end
-    it "given user inputs 101, returns 'C'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(101)
-        expected_output = 'CI'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 104, returns 'CIV'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(104)
-        expected_output = 'CIV'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 110, returns 'CX'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(110)
-        expected_output = 'CX'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 140, returns 'CXL'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(140)
-        expected_output = 'CXL'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    it "given user inputs 400, returns 'CD'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(400)
-        expected_output = 'CD'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-
-    it "given user inputs 440, returns 'CDXL'" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(440)
-        expected_output = 'CDXL'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-
-    it "given user inputs 500, returns 'D" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(500)
-        expected_output = 'D'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-
-    it "given user inputs 600, returns 'DC" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(600)
-        expected_output = 'DC'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-
-    it "given user inputs 900, returns 'CM" do
-        #Arrange / Act
-        actual_output = roman_numeral.convert(900)
-        expected_output = 'CM'
-
-        #Assert
-        expect(actual_output).to eq(expected_output)
-    end
-    
-    
 
 end
