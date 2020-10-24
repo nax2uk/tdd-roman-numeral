@@ -201,7 +201,7 @@ describe RomanNumeral do
             440 => 'CDXL',
             500 => 'D',
             600 => 'DC',
-            900 =>  'CM',
+            900 => 'CM',
             954 => 'CMLIV'
 
         }
@@ -216,6 +216,24 @@ describe RomanNumeral do
                 expect(actual_output).to eq(expected_output)
             end
         end
+    end
+    context "given user enters a 4 digit number (up to 3000), returns the appropriate symbols" do
+              # Arrange
+              tests = {
+                1000 => 'M',
+                2465 => 'MMCDLXV',
+                3948 => 'MMMCMXLVIII'
+            }
+            # Act / Assert
+            tests.each do |input, output|
+                it "given user inputs #{input}, returns #{output}" do
+    
+                    actual_output = roman_numeral.convert(input)
+                    expected_output = output
+                        
+                    expect(actual_output).to eq(expected_output)
+                end
+            end
     end
 
 end
