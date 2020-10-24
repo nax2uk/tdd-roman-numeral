@@ -201,7 +201,8 @@ describe RomanNumeral do
             440 => 'CDXL',
             500 => 'D',
             600 => 'DC',
-            900 =>  'CM'
+            900 =>  'CM',
+            954 => 'CMLIV'
 
         }
         # Act / Assert
