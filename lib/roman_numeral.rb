@@ -1,7 +1,7 @@
 class RomanNumeral
 
-    def convert(num = nil)
-        return nil unless num
+    def convert(num)
+        raise ArgumentError.new("You must enter a positive number") unless num
         recursive_convert(num,1)
   
     end

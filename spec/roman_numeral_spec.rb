@@ -2,14 +2,12 @@ require "./lib/roman_numeral"
 
 describe RomanNumeral do
     let(:roman_numeral) {RomanNumeral.new}
-    it "given user inputs nothing, returns nothing" do
-       
+    it "given user inputs nothing, throws argument error" do
+
         #Arrange / Act
-        actual_output = roman_numeral.convert()
-        expected_output = nil
 
         #Assert
-        expect(actual_output).to eq(expected_output)
+        expect { roman_numeral.convert() }.to raise_error(ArgumentError)
     end
 
     context "given user enters a 1 digit number, returns the correct symbols " do
@@ -217,14 +215,15 @@ describe RomanNumeral do
             end
         end
     end
-    
+
     context "given user enters a 4 digit number (up to 3999), returns the appropriate symbols" do
               # Arrange
               tests = {
                 1000 => 'M',
                 2465 => 'MMCDLXV',
                 3948 => 'MMMCMXLVIII',
-                3999 => 'MMMCMXCIX'
+                3999 => 'MMMCMXCIX',
+                6843 => 'VMDCCCXLIII'
             }
             # Act / Assert
             tests.each do |input, output|
