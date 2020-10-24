@@ -12,70 +12,37 @@ describe RomanNumeral do
         expect(actual_output).to eq(expected_output)
     end
 
-    context "when number ends with 1, 2, 3" do
-
-        it "given user inputs 1, returns 'I'" do
-
+    context "given user enters a 1 digit number, returns the correct symbols " do
+        it "given user inputs 0, returns ''" do 
+  
             #Arrange / Act
-             actual_output = roman_numeral.convert(1)
-             expected_output = 'I'
-     
-             #Assert
-             expect(actual_output).to eq(expected_output)
-        end
-    
-        it "given user inputs 2, returns 'II'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(2)
-            expected_output = 'II'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    
-        it "given user inputs 3, returns 'III'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(3)    
-            expected_output = 'III'
+            actual_output = roman_numeral.convert(0)
+            expected_output = ''
     
             #Assert
             expect(actual_output).to eq(expected_output)
         end
 
-        it "given user inputs 11, returns 'XI'" do
+        context "if user inputs 1, 2, 3, returns symbols containing I" do
+            # Arrange
+            inputs = {
+                1 => 'I',
+                2 => 'II',
+                3 => 'III'
+            }
 
-            #Arrange / Act
-            actual_output = roman_numeral.convert(11)    
-            expected_output = 'XI'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
+            # Act && Assert        
+            inputs.each do |input, output|
+                it "given user inputs #{input}, returns #{output}\n" do
+                    actual_output = roman_numeral.convert(input)
+                    expected_output = output
+            
+                    #Assert
+                    expect(actual_output).to eq(expected_output)
+                end
+            end
         end
-    
-        it "given user inputs 12, returns 'XII'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(12)    
-            expected_output = 'XII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-        it "given user inputs 13, returns 'XIII'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(13)    
-            expected_output = 'XIII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    
-    end
-   
-    context "if number ends with 4" do
+
         it "given user inputs 4, returns 'IV'" do
 
             #Arrange / Act
@@ -86,103 +53,27 @@ describe RomanNumeral do
             expect(actual_output).to eq(expected_output)
         end
 
-        it "given user inputs 14, returns 'XIV'" do
+        context "if user inputs 5, 6, 7, 8 returns symbols containing V or/and I" do
+            # Arrange
+            inputs = {
+                5 => 'V',
+                6 => 'VI',
+                7 => 'VII',
+                8 => 'VIII'
+            }
 
-            #Arrange / Act
-            actual_output = roman_numeral.convert(14)    
-            expected_output = 'XIV'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    
-    
-    end
-
-    context "if number ends with 5" do
-        it "given user inputs 5, returns 'V'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(5)    
-            expected_output = 'V'
-
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-        it "given user inputs 15, returns 'XV'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(15)    
-            expected_output = 'XV'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
+            # Act && Assert        
+            inputs.each do |input, output|
+                it "given user inputs #{input}, returns #{output}" do
+                    actual_output = roman_numeral.convert(input)
+                    expected_output = output
+            
+                    #Assert
+                    expect(actual_output).to eq(expected_output)
+                end
+            end
         end
 
-    end
-
-    context "if number ends with is 6, 7, 8" do
-
-        it "given user inputs 6, returns 'VI'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(6)    
-            expected_output = 'VI'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    
-        it "given user inputs 7, returns 'VII'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(7)    
-            expected_output = 'VII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    
-        it "given user inputs 8, returns 'VIII'" do
-    
-            #Arrange / Act
-            actual_output = roman_numeral.convert(8)    
-            expected_output = 'VIII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-
-        it "given user inputs 16, returns 'XVI'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(16)    
-            expected_output = 'XVI'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-        it "given user inputs 17, returns 'XVII'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(17)    
-            expected_output = 'XVII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-        it "given user inputs 18, returns 'XVIII'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(18)    
-            expected_output = 'XVIII'
-    
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-    end
-
-    context "if number ends with a 9" do
         it "given user inputs 9, returns 'IX'" do
 
             #Arrange / Act
@@ -192,37 +83,231 @@ describe RomanNumeral do
             #Assert
             expect(actual_output).to eq(expected_output)
         end   
-        
-        it "given user inputs 19, returns 'XIX'" do
 
-            #Arrange / Act
-            actual_output = roman_numeral.convert(19)    
-            expected_output = 'XIX'
+    end
+      
+    context "given user enters a 2 digit number that has 1, 2, or 3 tens, returns 'X's at the start of the output\n" do
+        context "given user inputs a number which has n tens returns output starting with n number of 'X's\n" do
 
-            #Assert
-            expect(actual_output).to eq(expected_output)
+            # Arrange
+            inputs = {
+                10 => 'X',
+                11 => 'XI',
+                12 => 'XII',
+                13 => 'XIII',
+                14 => 'XIV',
+                15 => 'XV',
+                16 => 'XVI',
+                17 => 'XVII',
+                18 => 'XVIII',
+                19 => 'XIX',
+                20 => 'XX',
+                21 => 'XXI',
+                22 => 'XXII',
+                23 => 'XXIII',
+                24 => 'XXIV',
+                25 => 'XXV',
+                26 => 'XXVI',
+                27 => 'XXVII',
+                28 => 'XXVIII',
+                29 => 'XXIX'
+            }
+
+            # Act
+            inputs.each do |input, output|
+                it "given user inputs #{input} returns #{output}\n" do 
+                    actual_output = roman_numeral.convert(input)    
+                    expected_output = output
+            
+                    #Assert
+                    expect(actual_output).to eq(expected_output)
+                end
+            end
+            
+        end
+     
+    end
+
+    context "given user enter a 2 digit number that has 4 tens, returns 'XL' at the start of the output" do
+        inputs = {
+            40 => 'XL',
+            41 => 'XLI',
+            44 => 'XLIV'
+        }
+
+        inputs.each do |input, output|
+            it "given user inputs #{input}, returns #{output}\n" do
+                #Arrange / Act
+                actual_output = roman_numeral.convert(input)
+                expected_output = output
+
+                #Assert
+                expect(actual_output).to eq(expected_output)
+            end
         end
     end
 
-    context "if number is 10 or greater that ends with a 0" do
-        it "given user inputs 10, returns 'X'" do
+    it "given user inputs 50, returns 'L'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(50)
+        expected_output = 'L'
 
-            #Arrange / Act
-            actual_output = roman_numeral.convert(10)    
-            expected_output = 'X'
-
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
-        it "given user inputs 20, returns 'XX'" do
-
-            #Arrange / Act
-            actual_output = roman_numeral.convert(20)    
-            expected_output = 'XX'
-
-            #Assert
-            expect(actual_output).to eq(expected_output)
-        end
+        #Assert
+        expect(actual_output).to eq(expected_output)
     end
+    it "given user inputs 51, returns 'LI'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(51)
+        expected_output = 'LI'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 54, returns 'LIV'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(54)
+        expected_output = 'LIV'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
+    it "given user inputs 60 returns 'LX'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(60)
+        expected_output = 'LX'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 61 returns 'LXI'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(61)
+        expected_output = 'LXI'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 64 returns 'LXIV'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(64)
+        expected_output = 'LXIV'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 70, returns 'LXX" do
+            #Arrange / Act
+            actual_output = roman_numeral.convert(70)
+            expected_output = 'LXX'
+    
+            #Assert
+            expect(actual_output).to eq(expected_output)
+
+    end
+    it "given user inputs 90, returns 'XC" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(90)
+        expected_output = 'XC'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+
+    end
+    it "given user inputs 95, returns 'XCV" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(95)
+        expected_output = 'XCV'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+
+    end
+    it "given user inputs 100, returns 'C'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(100)
+        expected_output = 'C'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 101, returns 'C'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(101)
+        expected_output = 'CI'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 104, returns 'CIV'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(104)
+        expected_output = 'CIV'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 110, returns 'CX'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(110)
+        expected_output = 'CX'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 140, returns 'CXL'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(140)
+        expected_output = 'CXL'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    it "given user inputs 400, returns 'CD'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(400)
+        expected_output = 'CD'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
+    it "given user inputs 440, returns 'CDXL'" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(440)
+        expected_output = 'CDXL'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
+    it "given user inputs 500, returns 'D" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(500)
+        expected_output = 'D'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
+    it "given user inputs 600, returns 'DC" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(600)
+        expected_output = 'DC'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+
+    it "given user inputs 900, returns 'CM" do
+        #Arrange / Act
+        actual_output = roman_numeral.convert(900)
+        expected_output = 'CM'
+
+        #Assert
+        expect(actual_output).to eq(expected_output)
+    end
+    
+    
 
 end

@@ -1,29 +1,47 @@
 class RomanNumeral
+
     def convert(num = nil)
         return nil unless num
-        
-        if num <= 10
-            return '' << 'I' * (num - 0) if num >= 1 && num <= 3
-            return 'IV' if num == 4
-            return 'V' if num == 5
-            return 'V' << 'I'*(num - 5) if num >= 6 && num <= 8
-            return 'IX' if num == 9
-            return 'X' if num == 10
-            
-        else
-            return 'X' << 'I' * (num - 10) if num >= 11 && num <= 13
-            return 'XIV' if num == 14
-            return 'XV' if num == 15
-            return 'XV' << 'I'*(num - 15) if num >= 16 && num <= 18
-            return 'XIX' if num == 19
-            return 'XX' if num == 20
+        recursive_convert(num,1)
+  
+    end
 
+    def value_at_position(number, position)
+        (number % (10**position)) / (10**(position-1))
+    end
+
+    def convert_helper(place_value, first_symbol, middle_symbol, last_symbol)
+        case place_value
+        when 0..3
+            return first_symbol * place_value 
+        when 4
+            return first_symbol << middle_symbol
+        when 5..8
+            return middle_symbol << first_symbol*(place_value - 5)
+        when 9
+            return first_symbol << last_symbol
         end
     end
-end
 
-# X = 10
-# IX = 9
-# V = 5
-# IV = 4
-# I = 1
+    def recursive_convert(num, place_value_position)
+
+        roman_numeral = {
+            1 => 'I',
+            5 => 'V',
+            10 => 'X',
+            50 => 'L',
+            100 => 'C',
+            500 => 'D',
+            1000 => 'M'
+        }
+
+        output_string = ""
+        current_hash_index = 2 * place_value_position - 2
+        current_place_value = value_at_position(num, place_value_position)
+        
+        if num >= roman_numeral.keys[current_hash_index]
+            output_string = recursive_convert(num, place_value_position+1) + convert_helper(current_place_value, roman_numeral.values[current_hash_index], roman_numeral.values[current_hash_index+ 1], roman_numeral.values[current_hash_index + 2])
+        end
+        output_string
+    end
+end
