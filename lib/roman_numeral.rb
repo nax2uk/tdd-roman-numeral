@@ -45,7 +45,3 @@ class RomanNumeral
         (number % (10**position)) / (10**(position-1))
     end
 end
-roman_numeral = RomanNumeral.new
-puts roman_numeral.convert(-3)
-
-puts roman_numeral.convert(3)
